@@ -1,4 +1,5 @@
 import React from "react"
+import CanvasStatic from "./CanvasStatic"
 
 export default class Canvas extends React.Component {
 
@@ -11,23 +12,18 @@ export default class Canvas extends React.Component {
 	}
 
 	getCanvas = () => {
-		const canvas = this.canvas.current
-		if (canvas !== null) {
-			const ctx = canvas.getContext("2d")
-			const { width, height } = canvas
-			console.log("ctx", ctx)
-			ctx.drawImage(this.props.video, 0, 0, width, height)
-		}
+		const canvas = this.canvas.current.canvasStatic.current
+		const ctx = canvas.getContext("2d")
+		const { width, height } = canvas
+		ctx.drawImage(this.props.video, 0, 0, width, height)
+		this.canvas.current.drawingStatic()
 	}
 
 	render(){
 		return (
 			<>
 			<button onClick={this.filming}>Get Canvas</button>
-			<canvas
-				width="200px"
-				height="150px"
-				ref={this.canvas}></canvas>
+			<CanvasStatic ref={this.canvas}/>
 			</>
 			)
 	}
