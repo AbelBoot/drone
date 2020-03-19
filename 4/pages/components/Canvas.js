@@ -9,6 +9,10 @@ export default class Canvas extends React.Component {
 	state = {
 		previous: null
 	}
+
+	callingDrone = () => {
+		console.log("calling drone")
+	}
 	
 	filming = () => {
 		setInterval(() => {
@@ -28,8 +32,6 @@ export default class Canvas extends React.Component {
 		main(blank.data, this.state.previous.data, current.data)
 		ctx.putImageData(blank, 0, 0 )
 		this.setState({previous: current})
-		
-
 	}
 
 	render(){
@@ -37,6 +39,7 @@ export default class Canvas extends React.Component {
 			<>
 			<button onClick={this.filming}>Get Canvas</button>
 			<CanvasStatic ref={this.canvas}/>
+			<button onClick={this.callingDrone}>Calling drone</button>
 			</>
 			)
 	}
