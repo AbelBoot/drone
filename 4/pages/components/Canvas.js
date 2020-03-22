@@ -1,17 +1,20 @@
 import React from "react"
+import { useState, useEffect} from 'react';
 import CanvasStatic from "./CanvasStatic"
 import { main } from "../Utilities/Util"
+import socket from "../Utilities/Socket"
 
 export default class Canvas extends React.Component {
 
 	canvas = React.createRef()
 
 	state = {
-		previous: null
+		previous: null,
 	}
 
 	callingDrone = () => {
-		console.log("calling drone")
+		console.log("calling")
+		socket.emit("message")
 	}
 	
 	filming = () => {
