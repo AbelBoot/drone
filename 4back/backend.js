@@ -1,7 +1,5 @@
 const dgram = require("dgram")
-const app = require("express")()
-const http = require("http").Server(app)
-const io = require("socket.io")(http)
+const io = require("socket.io")().listen(6767)
 
 const PORT = 8889
 const PORTSTATE = 8890
@@ -13,29 +11,21 @@ drone.bind(PORT)
 
 const commands = ["command", "battery?"]
 
-
 function sendingBasicCommands(){
 	commands.forEach(command => {
 		return drone.send(command, 0, command.length, PORT, HOST)
 	})
 }
 
-//sendingBasicCommands()
-
 drone.on("message", msg => {
 	console.log("message from drone is ", msg.toString())
-
 })
 
 io.on("connection", socket => {
-	socket.on("message", command => {
-		console.log("sent from browser")
+	socket.on("battery", command => {
+		console.log("Asking battery from browser")
 		sendingBasicCommands()
 	})
-})
-
-http.listen(6767, () => {
-	console.log("socket up and running")
 })
 
 

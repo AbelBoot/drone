@@ -1,3 +1,7 @@
+import io from "socket.io-client"
+
+export const socket = io("http://localhost:6767")
+
 export function main (b, p, c){
 	
 	for (let i = 0; i < b.length ; i+4){
@@ -9,3 +13,4 @@ export function main (b, p, c){
 	}
 	return b
 }
+

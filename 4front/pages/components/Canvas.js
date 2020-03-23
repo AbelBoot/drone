@@ -1,8 +1,8 @@
 import React from "react"
 import { useState, useEffect} from 'react';
 import CanvasStatic from "./CanvasStatic"
-import { main } from "../Utilities/Util"
-import socket from "../Utilities/Socket"
+import { main, socket } from "../Utilities/Util"
+
 
 export default class Canvas extends React.Component {
 
@@ -12,9 +12,8 @@ export default class Canvas extends React.Component {
 		previous: null,
 	}
 
-	callingDrone = () => {
-		console.log("calling")
-		socket.emit("message")
+	checkingBattery = () => {
+		socket.emit("battery")
 	}
 	
 	filming = () => {
@@ -42,7 +41,7 @@ export default class Canvas extends React.Component {
 			<>
 			<button onClick={this.filming}>Get Canvas</button>
 			<CanvasStatic ref={this.canvas}/>
-			<button onClick={this.callingDrone}>Calling drone</button>
+			<button onClick={this.checkingBattery}>Checking Battery</button>
 			</>
 			)
 	}
