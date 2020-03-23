@@ -31,11 +31,12 @@ export default class Canvas extends React.Component {
 		const blank = ctx.createImageData(width, height)
 		const current = ctx.getImageData(0, 0, width, height)
 		if (this.state.previous === null){this.setState({previous: current})}
+		//console.log("ctx previous first", this.state.previous.data)
 		main(blank.data, this.state.previous.data, current.data)
 		ctx.putImageData(blank, 0, 0 )
 		this.setState({previous: current})
-		console.log("ctx previous", this.state.previous.data)
-		console.log("ctx current", current.data)
+		//console.log("ctx previous second", this.state.previous.data)
+		console.log("ctx current", blank.data)
 	}
 
 	render(){
