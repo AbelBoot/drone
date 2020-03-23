@@ -19,7 +19,7 @@ export default class Canvas extends React.Component {
 	filming = () => {
 		setInterval(() => {
 			return this.getCanvas()
-		}, 16)
+		}, 3000)
 	}
 
 	getCanvas = () => {
@@ -34,6 +34,8 @@ export default class Canvas extends React.Component {
 		main(blank.data, this.state.previous.data, current.data)
 		ctx.putImageData(blank, 0, 0 )
 		this.setState({previous: current})
+		console.log("ctx previous", this.state.previous.data)
+		console.log("ctx current", current.data)
 	}
 
 	render(){
