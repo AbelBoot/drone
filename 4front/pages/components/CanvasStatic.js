@@ -8,8 +8,11 @@ export default class CanvasStatic extends React.Component {
 		const canvas = this.canvasStatic.current
 		const ctx = canvas.getContext("2d")
 		const { width, height } = canvas
+		
 		ctx.strokeStyle = "red"
         ctx.strokeRect(0, 0, width/4, height * 3/4)
+        
+
         ctx.strokeStyle = "green"
         ctx.strokeRect(width * 3/4, 0, width * 1/4, height * 3/4)
         ctx.strokeStyle = "blue"
