@@ -1,7 +1,6 @@
 import React from "react"
 import { main, socket } from "../Utilities/Util"
 
-
 export default class Canvas extends React.Component {
 
 	canvas = React.createRef()
