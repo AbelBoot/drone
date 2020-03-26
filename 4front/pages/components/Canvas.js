@@ -49,9 +49,12 @@ export default class Canvas extends React.Component {
         	}   
         	average = Math.round(average / (areaMatch.data.length / 4))
         	if (average > 25){
-        		console.log("average", average)
-        		console.log("el", el)
+        		console.log(`${el} with ${average}`)
+        		if (el == "green"){
+        		socket.emit(`${el}`)
+        	}
         	}  
+
 		}       
 	}
 

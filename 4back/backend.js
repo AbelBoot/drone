@@ -26,6 +26,10 @@ io.on("connection", socket => {
 		console.log("Asking battery from browser")
 		sendingBasicCommands()
 	})
+	socket.on("green", command => {
+		console.log("green is asking the battery")
+		sendingBasicCommands()
+	})
 })
 
 
