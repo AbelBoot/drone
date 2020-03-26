@@ -1,5 +1,4 @@
 import React from "react"
-import { useState, useEffect} from 'react';
 import CanvasStatic from "./CanvasStatic"
 import { main, socket } from "../Utilities/Util"
 
@@ -63,7 +62,10 @@ export default class Canvas extends React.Component {
 		return (
 			<>
 			<button onClick={this.filming}>Get Canvas</button>
-			<CanvasStatic ref={this.canvas}/>
+			<CanvasStatic 
+				width="200px"
+				height="150px"
+				ref={this.canvas}/>
 			<button onClick={this.checkingBattery}>Checking Battery</button>
 			</>
 			)
