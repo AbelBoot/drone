@@ -16,7 +16,11 @@ export default class Index extends React.Component {
 		return(
 			<>
 			<Camera lifting={this.lifting}/>
-			<Canvas video={this.state.video}/>
+			<Canvas 
+				width="200px"
+				height="150px"
+				video={this.state.video}
+			/>
 			</>
 			)
 	}
