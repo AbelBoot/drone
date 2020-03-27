@@ -17,7 +17,11 @@ export default class Canvas extends React.Component {
 	}
 
 	checkingBattery = () => {
-		//socket.emit("battery")
+		socket.emit("battery")
+	}
+
+	landing = () => {
+		socket.emit("landing")
 	}
 	
 	filming = () => {
@@ -29,6 +33,8 @@ export default class Canvas extends React.Component {
 	getCanvas = () => {
 		const canvas = this.canvas.current
 		const ctx = canvas.getContext("2d")
+		this.canvas.current.width = this.width
+		this.canvas.current.height = this.height
 		ctx.drawImage(this.props.video, 0, 0, this.width, this.height)
 		const blank = ctx.createImageData(this.width, this.height)
 		const current = ctx.getImageData(0, 0, this.width, this.height)
@@ -54,7 +60,6 @@ export default class Canvas extends React.Component {
         		socket.emit(`${el}`)
         	}
         	}  
-
 		}       
 	}
 
@@ -68,12 +73,20 @@ export default class Canvas extends React.Component {
 		}
 	}
 
+	fullScreen = () => {
+		const canvas = this.canvas.current
+		const ctx = canvas.getContext("2d")
+		canvas.requestFullscreen()
+	}
+
 	render(){
 		return (
 			<>
 			<button onClick={this.filming}>Get Canvas</button>
+			<button onClick={this.fullScreen}>Canvas Full Screen</button>
 			<canvas ref={this.canvas}></canvas>
 			<button onClick={this.checkingBattery}>Checking Battery</button>
+			<button onClick={this.landing}>Landing</button>
 			</>
 			)
 	}
