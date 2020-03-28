@@ -23,7 +23,7 @@ export default class Canvas extends React.Component {
 	landing = () => {
 		socket.emit("landing")
 	}
-	
+
 	filming = () => {
 		setInterval(() => {
 			return this.getCanvas()
@@ -57,8 +57,17 @@ export default class Canvas extends React.Component {
         	if (average > 25){
         		console.log(`${el} with ${average}`)
         		if (el == "green"){
-        		socket.emit(`${el}`)
-        	}
+        			socket.emit(`${el}`)
+        		}
+        		if (el == "red"){
+        			socket.emit(`${el}`)
+        		}
+        		if (el == "blue"){
+        			socket.emit(`${el}`)
+        		}
+        		if (el == "yellow"){
+        			socket.emit(`${el}`, "cw 3600" )
+        		}
         	}  
 		}       
 	}
